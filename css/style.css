@@ -227,11 +227,11 @@ span.pubtitle{
 
 /* adjusts distance between design and pianist */
 #d-block{
-  width: 45vw;
   margin: auto;
   padding-top: 625px;
-  height: 130rem;
+  height: 100vh;
   padding-left: 40vw;
+  width: 50rem;
 }
 
 #piano > .secabout{
@@ -438,7 +438,7 @@ a{
   position: absolute;
   left: 0;
   right: 0;
-  width: 50rem;
+  width: 30rem;
   font-family: "Brixton Sans";
   color: #CF0909;
   font-size: 10rem;
@@ -453,6 +453,9 @@ a{
 
 #pianist2{
   padding-top: 22rem;
+  padding-left: 0;
+  float: none;
+  text-align: center;
 }
 
 #bigwords p{
@@ -475,6 +478,7 @@ a{
 
 .iam2{
   visibility: hidden;
+  padding-left: 10rem;
 }
 
 .iam3{
@@ -496,10 +500,10 @@ a{
 
 #hand{
   height: 600px;
-  left: 0;
+  left: auto;
   right: 0;
-  padding-right: 25rem;
-  margin: auto;
+  padding-right: 0;
+  margin: 0;
   top: -610px;
 }
 
@@ -584,7 +588,7 @@ a{
 }
 
 #desec{
-  position: absolute;
+  position: relative;
   width: 50rem;
 }
 
@@ -977,7 +981,7 @@ nav.pnav {
   padding-bottom: 1rem;
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1200px) {
   div.pgrid{
     height: 13rem;
     width: 46vw;
@@ -988,44 +992,24 @@ nav.pnav {
   }
 
   #d-block{
-    width: 46vw;
     margin-right: 7rem;
     margin-left: auto;
   }
-}
 
-@media screen and (max-width: 900px) {
-  #heart{
-    height: 390px;
-    padding-left: 3rem;
-  }
-
-  div.pgrid{
-    height: 13rem;
-    width: 48vw;
-  }
   #head{
-    height: 370px;
+    height: 300px;
   }
 
-  .gallery div{
-    width: 33vw;
+  #heart{
+    width: 300px;
+
   }
 
-  .gallery img{
-    padding-top: 2rem;
-  }
-
-  #d-block{
-    width: 48vw;
-    margin-right: 3rem;
-    margin-left: auto;
+  #hand{
+    height:400px;
   }
 }
 
-#warning{
-  display: none;
-}
 
 @media screen and (max-width: 767px) {
   nav > ul > li{
@@ -1077,10 +1061,10 @@ nav.pnav {
   }
 
   #heart{
-    width: 180px;
+    width: 160px;
     height:auto;
     left: -450px;
-    top: 3vh;
+    top: 1vh;
   }
 
 
@@ -1098,7 +1082,9 @@ nav.pnav {
   #d-block{
     padding-left: 0;
     margin-left: 10vw;
-    width: 90vw;
+    /* height: 200vh; */
+    width: 80vw;
+    height: 130vh;
   }
 
   #desec{
@@ -1110,15 +1096,34 @@ nav.pnav {
     text-align: left;
   }
 
+  #piano{
+    width: 80vw;
+    padding-left: 0;
+    margin-left: 10vw;
+    margin-right: auto;
+  }
+
   #hand{
     height: 300px;
   }
 
   #designer2{
-    width: 10vw;
+    width: 10rem;
     left: 0;
     padding-left:0;
   }
-
+#dbm{
+  height:0;
+}
+#pianist2{
+  width: 10rem;
+  padding-left: 0;
+  float: none;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 }

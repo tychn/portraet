@@ -1,293 +1,312 @@
-//ScrollMagic
-var controller = new ScrollMagic.Controller();
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
-// function adjust(){
-//   // var add100 = 0;
-//   // if ((parseInt($(window).width()/100)) > 11){
-//   //   add100 = 0;
-//   // } else {
-//   //   add100 = 11 - (parseInt($(window).width()/100));
-//   // }
-//   // dis = $("#d-block").offset().top - 2200 - add100*100;
-//   dis = $("#d-block").offset().top - 1935;
-//   // dis2 = $("#piano").offset().top - $("#design").offset().top + 1275;
-//   dis2 = $("#piano").offset().top - 1695;
-//   if (dis2 < 2700){
-//     dis2 += 350;
-//   }
-//
-//   if (dis > 1700){
-//     dis -= 400;
-//   }
-  //console.log(dis);
-  //console.log(dis2);
-//}
+// Keep ~60% of #hand visible; 40% hangs past the right edge (works with y tweens)
+gsap.set("#hand", { xPercent: 35 });
+
+// ScrollMagic triggerHook → ScrollTrigger start ("elementPos viewportPos")
+function scrollStart(triggerHook, offset) {
+  var hooks = { onLeave: 0, onCenter: 0.5, onEnter: 1 };
+  var hook = typeof triggerHook === "string" ? hooks[triggerHook] : Number(triggerHook);
+  if (isNaN(hook)) {
+    hook = 0.5;
+  }
+  var viewport = hook * 100 + "%";
+  var extra = "";
+  if (offset) {
+    extra = offset >= 0 ? "+=" + offset : String(offset);
+  }
+  return "top" + extra + " " + viewport;
+}
+
+// ScrollMagic setClassToggle with duration 0
+function toggleClassOnPass(targets, className, trigger, triggerHook, offset) {
+  ScrollTrigger.create({
+    trigger: trigger,
+    start: scrollStart(triggerHook, offset),
+    onEnter: function () {
+      gsap.utils.toArray(targets).forEach(function (el) {
+        el.classList.add(className);
+      });
+    },
+    onLeaveBack: function () {
+      gsap.utils.toArray(targets).forEach(function (el) {
+        el.classList.remove(className);
+      });
+    }
+  });
+}
 
 var flightpath = {
-			entry : {
-				curviness: 1.25,
-				autoRotate: true,
-				values: [
-						{x: 200,	y: -20},
-						{x: 310,	y: 10}
-					]
-			},
-			looping : {
-				curviness: 1.25,
-				autoRotate: true,
-				values: [
-            {x: 510,	y: 80},
-            {x: 620,	y: -60},
-            {x: 500,	y: -100},
-            {x: 380,	y: 20},
-            {x: 500,	y: 60},
-            {x: 600,	y: 20},
-            {x: 650,	y: 35}
-					]
-			},
-			leave : {
-				curviness: 1.25,
-				autoRotate: true,
-				values: [
-						{x: 690,	y: 80},
-						{x: 800,	y: 180},
-						{x: $(window).width() + 300,	y: 50},
-					]
-			}
-		};
+  entry: [
+    { x: 200, y: -20 },
+    { x: 310, y: 10 }
+  ],
+  looping: [
+    { x: 510, y: 80 },
+    { x: 620, y: -60 },
+    { x: 500, y: -100 },
+    { x: 380, y: 20 },
+    { x: 500, y: 60 },
+    { x: 600, y: 20 },
+    { x: 650, y: 35 }
+  ],
+  leave: [
+    { x: 690, y: 80 },
+    { x: 800, y: 180 },
+    { x: window.innerWidth + 300, y: 50 }
+  ]
+};
 
-    var controllerleaf = new ScrollMagic.Controller();
+var tweenleaf = gsap.timeline()
+  .to("#plane", {
+    duration: 1.2,
+    motionPath: { path: flightpath.entry, autoRotate: true, curviness: 1.25, relative: false },
+    ease: "power1.inOut"
+  })
+  .to("#plane", {
+    duration: 2,
+    motionPath: { path: flightpath.looping, autoRotate: true, curviness: 1.25, relative: false },
+    ease: "power1.inOut"
+  })
+  .to("#plane", {
+    duration: 1,
+    motionPath: { path: flightpath.leave, autoRotate: true, curviness: 1.25, relative: false },
+    ease: "power1.inOut"
+  });
 
-		// create tween
-		var tweenleaf = new TimelineMax()
-			.add(TweenMax.to($("#plane"), 1.2, {css:{bezier:flightpath.entry}, ease:Power1.easeInOut}))
-			.add(TweenMax.to($("#plane"), 2, {css:{bezier:flightpath.looping}, ease:Power1.easeInOut}))
-			.add(TweenMax.to($("#plane"), 1, {css:{bezier:flightpath.leave}, ease:Power1.easeInOut}));
+ScrollTrigger.create({
+  animation: tweenleaf,
+  start: 100,
+  end: 600,
+  pin: "#target",
+  scrub: true
+});
 
-		// build scene
-		var sceneleaf = new ScrollMagic.Scene({triggerElement: "", duration: 500, offset: 100})
-						.setPin("#target")
-						.setTween(tweenleaf)
-						.addTo(controller);
-
-
-  // adjust();
-
-
-  if ($(window).width() > 0) {
-    var scene1Fade = new TweenMax.fromTo("#wave", 1, {autoAlpha: 1}, {autoAlpha: 0, ease: Linear.easeNone});
-    var smscene1a = new ScrollMagic.Scene({duration: 200})
-      .setTween(scene1Fade)
-      .addTo(controller);
-
+gsap.fromTo("#wave", { autoAlpha: 1 }, {
+  autoAlpha: 0,
+  ease: "none",
+  scrollTrigger: {
+    start: 0,
+    end: 200,
+    scrub: true
   }
+});
 
+gsap.fromTo(".hero-1", { autoAlpha: 1 }, {
+  autoAlpha: 0,
+  ease: "none",
+  scrollTrigger: {
+    start: 0,
+    end: 400,
+    scrub: true
+  }
+});
 
+gsap.fromTo(".hero-1", { y: 0 }, {
+  y: 250,
+  ease: "none",
+  scrollTrigger: {
+    start: 0,
+    end: 400,
+    scrub: true
+  }
+});
 
-  var tweenHeroFade = new TweenMax.fromTo(".hero-1", 1, {autoAlpha: 1}, {autoAlpha: 0, ease: Linear.easeNone});
+ScrollTrigger.create({
+  trigger: "#stop1",
+  start: scrollStart("onLeave"),
+  end: "+=400",
+  pin: "#bigwords"
+});
 
-  var tweenHeroSlow = new TweenMax.fromTo(".hero-1", 1, {y: 0}, {y:250, ease: Linear.easeNone});
+toggleClassOnPass("#portrait", "active", "#stop3", "onLeave", 100);
 
+gsap.timeline({
+  scrollTrigger: {
+    trigger: "#stop1",
+    start: scrollStart("onLeave"),
+    end: "+=400",
+    scrub: true
+  }
+})
+  .to("#designer", { y: 3000, ease: "circ.inOut", duration: 1 }, 0)
+  .to("#pianist", { y: 3000, ease: "circ.inOut", duration: 1 }, 0)
+  .to("#head", { y: -435, ease: "circ.inOut", duration: 1 }, 0)
+  .to("#resume", { y: -170, ease: "circ.inOut", duration: 1 }, 0);
 
-  // build scene
-  var smscene3 = new ScrollMagic.Scene({duration: 400})
-    .setTween(tweenHeroFade)
-    .addTo(controller);
+toggleClassOnPass("#designer", "active", "#stop2", "onEnter");
+toggleClassOnPass("#pianist", "active", "#stop2", "onEnter");
 
-  var smscene3a = new ScrollMagic.Scene({duration: 400})
-    .setTween(tweenHeroSlow)
-    .addTo(controller);
+ScrollTrigger.create({
+  trigger: "#stop2",
+  start: scrollStart(0.2),
+  end: "+=320",
+  pin: "#designer2"
+});
 
+gsap.to(".iam2", {
+  y: 770,
+  ease: "circ.inOut",
+  scrollTrigger: {
+    trigger: "#stop2",
+    start: scrollStart(0.8),
+    end: "+=300",
+    scrub: true
+  }
+});
+toggleClassOnPass(".iam2", "activeOn", "#stop2", 0.8);
 
-  var scene = new ScrollMagic.Scene({triggerElement: "#stop1", triggerHook: 'onLeave', duration: 400})
-  	.setPin("#bigwords")
-  	.addTo(controller);
+gsap.timeline({
+  scrollTrigger: {
+    trigger: "#stop2",
+    start: scrollStart(0.3),
+    end: "+=400",
+    scrub: true
+  }
+})
+  .to("#head", { y: 0, ease: "circ.inOut", duration: 1 }, 0)
+  .to("#heart", { x: 390, ease: "circ.inOut", duration: 1 }, 0);
 
-  // new ScrollMagic.Scene({triggerElement: "#stop1", triggerHook: 'onLeave', offset: 200})
-  // 					.setClassToggle("#resume", "active") // add class toggle
-  // 					.addTo(controller);
+ScrollTrigger.create({
+  trigger: "#stop3",
+  start: scrollStart(0.1),
+  end: "+=300",
+  pin: "#pianist2"
+});
 
-  new ScrollMagic.Scene({triggerElement: "#stop3", triggerHook: 'onLeave', offset: 100})
-  					.setClassToggle("#portrait", "active") // add class toggle
-  					.addTo(controller);
+gsap.to(".iam3", {
+  y: 770,
+  ease: "circ.inOut",
+  scrollTrigger: {
+    trigger: "#stop3",
+    start: scrollStart(0.4),
+    end: "+=300",
+    scrub: true
+  }
+});
+toggleClassOnPass(".iam3", "activeOn", "#stop3", 0.5);
 
-  var graphdown1 = new TimelineMax ()
-    .add([
-      TweenMax.to("#designer", 1, {y:3000, ease: Circ.easeInOut}),
-      TweenMax.to("#pianist", 1, {y:3000, ease: Circ.easeInOut}),
-      TweenMax.to("#head", 1, {y:-435, ease: Circ.easeInOut}),
-      TweenMax.to("#resume", 1, {y:-170, ease: Circ.easeInOut})
-    ]);
+// Leave from the on-screen position (x: 390), not from the tween's create-time x: 0
+gsap.fromTo("#heart", { x: 390 }, {
+  x: -600,
+  ease: "circ.inOut",
+  immediateRender: false,
+  scrollTrigger: {
+    trigger: "#designer2",
+    start: scrollStart("onLeave", -100),
+    end: "+=600",
+    scrub: true
+  }
+});
 
+gsap.to("#hand", {
+  y: 590,
+  ease: "circ.inOut",
+  scrollTrigger: {
+    trigger: "#trig2",
+    start: scrollStart("onLeave", 200),
+    end: "+=400",
+    scrub: true
+  }
+});
 
-  var smscene3b = new ScrollMagic.Scene({triggerElement: "#stop1", duration: 400, triggerHook: 'onLeave', reverse:true})
-    .setTween(graphdown1)
-    .addTo(controller);
+gsap.to("#portrait", {
+  autoAlpha: 1,
+  ease: "none",
+  scrollTrigger: {
+    trigger: "#about",
+    start: scrollStart("onLeave"),
+    end: "+=200",
+    scrub: true
+  }
+});
 
-//text disappear after going down
-  new ScrollMagic.Scene({triggerElement: "#stop2", triggerHook: 'onEnter'})
-  					.setClassToggle("#designer", "active") // add class toggle
-  					.addTo(controller);
-  new ScrollMagic.Scene({triggerElement: "#stop2", triggerHook: 'onEnter'})
-  					.setClassToggle("#pianist", "active") // add class toggle
-  					.addTo(controller);
-//designer 2 pin
-  var scene = new ScrollMagic.Scene({triggerElement: "#stop2", triggerHook: '0.2',  duration: 320})
-    .setPin("#designer2")
-    .addTo(controller);
+// Exit from the on-screen y (590), not from create-time y: 0
+gsap.fromTo("#hand", { y: 590 }, {
+  y: -590,
+  ease: "circ.inOut",
+  immediateRender: false,
+  scrollTrigger: {
+    trigger: "#about",
+    start: scrollStart("onCenter"),
+    end: "+=800",
+    scrub: true
+  }
+});
 
-//iam down
-  var iamdown2 = new TweenMax.to(".iam2", 1, {y: 770, ease: Circ.easeInout});
-  var iamdown2sc = new ScrollMagic.Scene({triggerElement: "#stop2", triggerHook: '0.8', duration: 300, reverse:true})
-    .setTween(iamdown2)
-    .addTo(controller);
-  new ScrollMagic.Scene({triggerElement: "#stop2", triggerHook: '0.8'})
-  		.setClassToggle(".iam2", "activeOn") // add class toggle
-  		.addTo(controller);
-//graphdown 2
-  var graphdown2 = new TimelineMax ()
-    .add([
-      // TweenMax.to("#pianist", 1, {y:dis2, ease: Circ.easeInOut}),
-      TweenMax.to("#head", 1, {y:0, ease: Circ.easeInOut}),
-      TweenMax.to("#heart", 1, {x: 390, ease: Circ.easeInOut}),
-    ]);
+// Was ScrollMagic setVelocity; #logo_small may be absent — no-op if missing
+if (document.querySelector("#logo_small")) {
+  gsap.to("#logo_small", {
+    opacity: 1,
+    duration: 0.2,
+    ease: "elastic",
+    scrollTrigger: {
+      trigger: ".portfolio-container",
+      start: scrollStart("onCenter"),
+      toggleActions: "play none none reverse"
+    }
+  });
+}
 
-  var smscene3c = new ScrollMagic.Scene({triggerElement: "#stop2", triggerHook: '0.3', duration: 400, reverse:true})
-    .setTween(graphdown2)
-    .addTo(controller);
+gsap.to(".divider", {
+  y: 29,
+  ease: "none",
+  scrollTrigger: {
+    trigger: "#portfolio",
+    start: scrollStart("onCenter"),
+    end: "+=1",
+    scrub: true
+  }
+});
 
-//pianist 2 pin
-  var scene = new ScrollMagic.Scene({triggerElement: "#stop3", triggerHook: '0.1', duration: 300})
-    .setPin("#pianist2")
-    .addTo(controller);
-//iam2 down
-  var iamdown2 = new TweenMax.to(".iam3", 1, {y:770, ease: Circ.easeInout});
-  var iamdown2sc = new ScrollMagic.Scene({triggerElement: "#stop3", triggerHook: '0.4', duration: 300, reverse:true})
-    .setTween(iamdown2)
-    .addTo(controller);
-  new ScrollMagic.Scene({triggerElement: "#stop3", triggerHook: '0.5'})
-  		.setClassToggle(".iam3", "activeOn") // add class toggle
-  		.addTo(controller);
+gsap.to(".divider", {
+  y: 55,
+  x: 20,
+  ease: "none",
+  scrollTrigger: {
+    trigger: "#research",
+    start: scrollStart("onCenter"),
+    end: "+=1",
+    scrub: true
+  }
+});
 
-//designer2 pin again
-  new ScrollMagic.Scene({triggerElement: "#d2pintrigger", triggerHook: '0.62', duration: 800})
-  		.setPin("#designer2") // add class toggle
-  		.addTo(controller);
+gsap.to(".divider", {
+  y: 80,
+  x: 20,
+  ease: "none",
+  scrollTrigger: {
+    trigger: "#design",
+    start: scrollStart("onCenter"),
+    end: "+=1",
+    scrub: true
+  }
+});
 
-  var dsout = new TimelineMax ()
-    .add([
-      TweenMax.to("#desec", 1, {x: 2500, ease:Circ.easeInOut})
-    ]);
+gsap.to(".divider", {
+  y: 104,
+  x: 20,
+  ease: "none",
+  scrollTrigger: {
+    trigger: "#piano",
+    start: scrollStart("onCenter"),
+    end: "+=1",
+    scrub: true
+  }
+});
 
-  new ScrollMagic.Scene({triggerElement: "#stop2", triggerHook: 'onLeave', offset: 470, duration: 300, reverse: true})
-      .setTween(dsout)
-      .setPin("#desec")
-  		.addTo(controller);
+gsap.to(".divider", {
+  y: 134,
+  x: 0,
+  ease: "none",
+  scrollTrigger: {
+    trigger: "#contact",
+    start: scrollStart("onCenter"),
+    end: "+=1",
+    scrub: true
+  }
+});
 
-  var htout = new TimelineMax ()
-    .add([
-      TweenMax.to("#heart", 1, {x: -600, ease: Circ.easeInOut})
-    ]);
-
-  new ScrollMagic.Scene({triggerElement: "#stop2", triggerHook: 'onLeave', offset: 1080, duration: 600, reverse: true})
-      .setTween(htout)
-  		.addTo(controller);
-
-  // new ScrollMagic.Scene({triggerElement: "#bigcontainer", triggerHook: '0.25', duration: 400, reverse: true})
-  //     .setClassToggle("#desec", "active") // add class toggle
-  // 		.addTo(controller);
-  // new ScrollMagic.Scene({triggerElement: "#bigcontainer", triggerHook: '0.4', duration: 400, reverse: true})
-  //     .setClassToggle("#heart", "active") // add class toggle
-  //     .addTo(controller);
-
-  var wipeAnimation = new TimelineMax()
-			// animate to second panel	// move back in 3D space
-			.to("#bigcontainer", 1,   {x: "-25%"})	// move in to first panel			// move back to origin in 3D space
-			// animate to third panel
-			.to("#bigcontainer", 1,   {x: "-50%"})
-			// animate to forth panel
-			.to("#bigcontainer", 1,   {x: "-75%"})
-      .to("#bigcontainer", 1,   {x: "-100%"})
-
-		// create scene to pin and link animation
-
-	var yoffset = -($(window).height() / 2 - 140);
-	console.log(yoffset);
-		new ScrollMagic.Scene({
-				triggerElement: "#pincontainer",
-				triggerHook: "onLeave",
-        offset: yoffset,
-				duration: "700%"
-			})
-			.setPin("#pincontainer")
-			.setTween(wipeAnimation)
-			.addTo(controller);
-
-  var textdown3 = new TimelineMax ()
-    .add([
-      TweenMax.to("#hand", 1, {y: 590, ease: Circ.easeInOut}),
-    ]);
-
-  var smscene3z = new ScrollMagic.Scene({triggerElement: "#stop3", triggerHook: '0.3', duration: 400, reverse:true})
-    .setTween(textdown3)
-    .addTo(controller);
-
-
-
-  var portraitFade = new TimelineMax ()
-    .add([
-      TweenMax.to("#portrait", 1, {autoAlpha: 1, ease: Linear.easeNone}),
-    ]);
-
-  var smscenePortraitFade = new ScrollMagic.Scene({triggerElement: "#about", triggerHook: 'onLeave', duration: 200})
-    .setTween(portraitFade)
-    .addTo(controller);
-
-  var handup = new TimelineMax ()
-    .add([
-      TweenMax.to("#hand", 1, {y: -590, ease: Circ.easeInOut}),
-    ]);
-
-  var handupsc = new ScrollMagic.Scene({triggerElement: "#about", triggerHook: 'onCenter', duration: 800, reverse:true})
-    .setTween(handup)
-    // .setClassToggle("#bigcontainer", "active")
-    .addTo(controller);
-
-
-
-
-
-  var smsceneLogo = new ScrollMagic.Scene({triggerElement: ".portfolio-container"})
-    // trigger a velocity opaticy animation
-    .setVelocity("#logo_small", {opacity: 1}, {duration: 200, easing:Elastic})
-    .addTo(controller);
-
-  var smsceneDivider2 = new ScrollMagic.Scene({triggerElement: "#portfolio", duration:1})
-    // trigger a velocity opaticy animation
-    .setTween(".divider", {y: "29px"})
-    .addTo(controller);
-
-  var smsceneDivider3 = new ScrollMagic.Scene({triggerElement: "#research", duration: 1})
-    // trigger a velocity opaticy animation
-    .setTween(".divider", {y: "55px", x:"20px"})
-    .addTo(controller);
-
-  var smsceneDivider4 = new ScrollMagic.Scene({triggerElement: "#design", duration: 1})
-    // trigger a velocity opaticy animation
-    .setTween(".divider", {y: "80px", x:"20px"})
-    .addTo(controller);
-
-  var smsceneDivider4 = new ScrollMagic.Scene({triggerElement: "#piano", duration: 1})
-    // trigger a velocity opaticy animation
-    .setTween(".divider", {y: "104px", x:"20px"})
-    .addTo(controller);
-
-  var smsceneDivider4 = new ScrollMagic.Scene({triggerElement: "#contact", duration: 1})
-    // trigger a velocity opaticy animation
-    .setTween(".divider", {y: "134px", x:"0px"})
-    .addTo(controller);
-
-
-$(window).resize(function() {
-    location.reload();
+$(window).resize(function () {
+  location.reload();
 });
