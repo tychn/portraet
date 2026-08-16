@@ -38,9 +38,30 @@ $(document).ready(function(){
   $('body').smoothScroll({
     delegateSelector: 'ul a'
   });
-  // sizeHeight();
-  // verticalAlignText('.aboutText1');
 });
+
+// Mobile hamburger: bind immediately (script is after <nav> in the DOM).
+// Kept outside document.ready so it is not blocked if smoothScroll fails.
+(function () {
+  var nav = document.querySelector('nav');
+  var toggle = document.querySelector('.nav-toggle');
+  if (!nav || !toggle) return;
+
+  function setOpen(open) {
+    nav.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+  }
+
+  toggle.addEventListener('click', function () {
+    setOpen(!nav.classList.contains('is-open'));
+  });
+
+  nav.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('ul a');
+    if (link) setOpen(false);
+  });
+})();
 
 $(window).on('resize', function(){
   // sizeHeight();

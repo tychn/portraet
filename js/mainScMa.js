@@ -312,64 +312,49 @@ if (document.querySelector("#logo_small")) {
   });
 }
 
-gsap.to(".divider", {
-  y: 29,
-  ease: "none",
-  scrollTrigger: {
+// Divider tracks the active nav item in both scroll directions.
+// (Multiple scrubbed tweens on the same props only worked going down.)
+(function () {
+  function setDivider(y, x) {
+    gsap.to(".divider", {
+      y: y,
+      x: x,
+      duration: 0.25,
+      ease: "power2.out",
+      overwrite: true
+    });
+  }
+
+  var stops = [
+    { trigger: "#portfolio", y: 29, x: 0 },
+    { trigger: "#research", y: 55, x: 20 },
+    { trigger: "#design", y: 80, x: 20 },
+    { trigger: "#piano", y: 104, x: 20 },
+    { trigger: "#contact", y: 134, x: 0 }
+  ];
+
+  // Above About → Home
+  ScrollTrigger.create({
     trigger: "#portfolio",
     start: scrollStart("onCenter"),
-    end: "+=1",
-    scrub: true
-  }
-});
+    onLeaveBack: function () {
+      setDivider(0, 0);
+    }
+  });
 
-gsap.to(".divider", {
-  y: 55,
-  x: 20,
-  ease: "none",
-  scrollTrigger: {
-    trigger: "#research",
-    start: scrollStart("onCenter"),
-    end: "+=1",
-    scrub: true
-  }
-});
-
-gsap.to(".divider", {
-  y: 80,
-  x: 20,
-  ease: "none",
-  scrollTrigger: {
-    trigger: "#design",
-    start: scrollStart("onCenter"),
-    end: "+=1",
-    scrub: true
-  }
-});
-
-gsap.to(".divider", {
-  y: 104,
-  x: 20,
-  ease: "none",
-  scrollTrigger: {
-    trigger: "#piano",
-    start: scrollStart("onCenter"),
-    end: "+=1",
-    scrub: true
-  }
-});
-
-gsap.to(".divider", {
-  y: 134,
-  x: 0,
-  ease: "none",
-  scrollTrigger: {
-    trigger: "#contact",
-    start: scrollStart("onCenter"),
-    end: "+=1",
-    scrub: true
-  }
-});
+  stops.forEach(function (pos) {
+    ScrollTrigger.create({
+      trigger: pos.trigger,
+      start: scrollStart("onCenter"),
+      onEnter: function () {
+        setDivider(pos.y, pos.x);
+      },
+      onEnterBack: function () {
+        setDivider(pos.y, pos.x);
+      }
+    });
+  });
+})();
 
 // Avoid full page reload on mobile URL-bar resize; only refresh when width changes
 var lastViewportWidth = window.innerWidth;
