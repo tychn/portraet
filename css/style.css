@@ -1,0 +1,1124 @@
+body {
+  font-family: "Martel", "Sans Serif", "Arial";
+  font-weight: 200;
+  overflow-x: hidden;
+  font-size: 1.7rem;
+  line-height: 3rem;
+  color: #444;
+
+}
+
+body.color{
+  background-color:#E8C9A8;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-weight: 400;
+}
+
+
+@font-face {
+    font-family: 'Brixton';
+    src: url(../fonts/brixton.ttf);
+}
+
+@font-face {
+    font-family: 'Brixton Sans';
+    src: url(../fonts/brixtonsans.ttf);
+}
+
+@font-face {
+    font-family: 'Tallow Sans';
+    src: url(../fonts/tallow.ttf);
+}
+
+@font-face {
+    font-family: 'Jimmy Script';
+    src: url(../fonts/jimmy.ttf);
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'Jimmy Script';
+    src: url(../fonts/jimmybold.ttf);
+    font-weight: 400;
+}
+
+.888{
+  color: #888 !important;
+}
+
+.white{
+  color: white;
+}
+
+.aaa{
+  color: #aaa !important;
+}
+
+.666{
+  color: #444 !important;
+}
+
+.444{
+  color: #444 !important;
+}
+
+.black{
+  color: black !important;
+}
+
+.bg-light-gray{
+  background-color: #f7f7f7;
+}
+
+
+
+h4{
+  font-size: 1.3rem;
+  text-align:center;
+  letter-spacing: 0.03rem;
+}
+
+nav{
+  position: fixed;
+  height: 10rem;
+  font-size: 2rem;
+  text-align: left;
+  left: 5vw;
+  margin: auto;
+  bottom: 10rem;
+  padding-bottom: 1rem;
+  z-index: 9998;
+  background-color: none;
+  letter-spacing: 0.5pt;
+}
+
+canvas{
+  position: fixed;
+  z-index: 1;
+}
+
+.divider{
+  position: absolute;
+  width: 0.6rem;
+  height: 0.6rem;
+  right: 200px;
+  top: 4px;
+  border-radius: 100px;
+  background-color: #CF0909;
+  z-index: 10000;
+
+}
+
+
+
+.port_nav{
+  color: #CF0909;
+  font-family: 'Martel Sans';
+  position: fixed;
+  top: 7rem;
+  right: 5rem;
+}
+
+nav > ul{
+  color: #fff;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  margin: 0;
+  line-height: 20px;
+}
+
+
+
+li.navItem a{
+  font-family: "Brixton";
+  font-size: 3rem;
+}
+
+li.nav2 a{
+  padding-left: 2rem;
+  font-size: 2.5rem;
+}
+
+li.navItem.nav2{
+  margin-bottom: 0.5rem;
+}
+li {
+  list-style-type: none;
+}
+
+
+.hero-1{
+  display: block;
+  position: relative;
+  width: 90vh;
+  top: 41vh;
+
+  margin: auto auto;
+}
+
+.pubpdf{
+  color: #CF0909;
+  font-weight: 600;
+  margin-left: 1rem;
+  font-family: "Martel Sans";
+}
+
+b{
+  font-weight: 900;
+}
+span.pubtitle{
+  font-size: 2.5rem;
+  font-weight: 600;
+  font-family: "Tallow Sans";
+  /* font-family: "Koenig-Type Mager"; */
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  display: block;
+  color: #CF0909;
+}
+
+
+#home{
+  height: 90vh;
+}
+
+#research{
+  width: 45vw;
+  max-width: 600px;
+  display: block;
+  padding-top: 30vh;
+  position: relative;
+  margin: auto;
+  margin-top: 50rem;
+  padding-right: 10rem;
+  text-align: right;
+  line-height: 4rem;
+  z-index:-1;
+}
+
+
+#resume{
+  position: absolute;
+  z-index: 999;
+  z-index: 999; font-size: 3rem; width: 15rem; display: block; position: absolute; margin-top: 23rem; margin-left: 34rem;
+}
+
+.secabout{
+  font-family: "Martel";
+  font-size: 1.7rem;
+  padding-bottom: 3rem;
+  line-height: 3rem;
+  width: auto;
+}
+
+#r-block{
+  font-size: 1.7rem;
+}
+
+#research >p {
+  padding-top: 3rem;
+}
+
+#design{
+  width: 75vw;
+}
+
+/* adjusts distance between design and pianist */
+#d-block{
+  width: 45vw;
+  margin: auto;
+  padding-top: 625px;
+  height: 130rem;
+  padding-left: 40vw;
+}
+
+#piano > .secabout{
+  padding-bottom: 0;
+}
+
+
+.opus{
+  color: #CF0909;
+  font-family: "Jimmy Script";
+  font-size: 3rem;
+}
+
+.composer{
+  color: #444;
+}
+
+.authors{
+  font-family: "Jimmy Script";
+  font-size: 2.5rem;
+}
+
+.section{
+  width: 100vw;
+  height: auto;
+}
+
+
+#container{
+  position: absolute;
+  z-index: 2;
+}
+
+
+#wave{
+  background-image: url("../img/wave.png");
+  background-size: 120vh;
+  background-position: center 70%;
+  background-repeat: no-repeat;
+  bottom:0vh;
+  width: 100vw;
+  height: 115vh;
+  position: fixed;
+  z-index: 9997;
+}
+
+.hero-transition{
+  width: 100vw;
+}
+
+.gallery img{
+  width: 15vw;
+  display: inline-block;
+  vertical-align: middle;
+  float: right;
+  /*-webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;*/
+}
+
+/*.gallery img:hover{
+  background-color: #ddd;
+}*/
+
+
+a:hover{
+  color: inherit;
+}
+
+div.pgrid{
+  margin:auto;
+  margin-bottom: 2rem;
+  display: inline-block;
+  vertical-align: middle;
+  width: 45vw;
+  font-size: 1.7rem;
+}
+
+
+
+
+.pgrid h3{
+  font-size: 2.5rem;
+  font-weight: 600;
+  font-family: "Tallow Sans";
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  display: block;
+  color: #CF0909;
+  margin-bottom: 0.5rem;
+}
+
+.gallery div{
+  width: 28vw;
+  height: 1rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+.pgrid p{
+  margin: 0;
+  padding: 0;
+  margin: auto;
+  line-height: 3rem;
+}
+
+
+.container{
+  position: relative;
+  width: 80vw;
+  margin: auto;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.load-screen{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    background-color: #E8C9A8;
+}
+
+
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+}
+
+@-webkit-keyframes spinner {
+    to {-webkit-transform: rotate(360deg);}
+}
+
+.spinner {
+    min-width: 24px;
+    min-height: 24px;
+}
+
+.spinner:before {
+    content: 'Loading…';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+}
+
+.spinner:not(:required):before {
+    content: '';
+    border-radius: 50%;
+    border: 2px solid rgba(196, 33, 40, 0.4);
+    border-top-color: rgba(196, 33, 40, 0.8);
+    animation: spinner .6s linear infinite;
+    -webkit-animation: spinner .6s linear infinite;
+}
+
+
+.contact-container{
+  position: fixed;
+  height: 35rem;
+  width: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  visibility: hidden;
+}
+
+.contact-container img{
+  height: 20rem;
+  padding-bottom: 1rem;
+}
+
+#contact > p i{
+  font-size: 2.5rem;
+  color: #CF0909;
+}
+
+
+
+#bigwords{
+  width: 50rem;
+  height: 10rem;
+  padding-top: 27vh; /*controls if bigwords stays at center screen*/
+  margin: auto;
+  position: absolute;
+  left:0;
+  right:0;
+  font-family: "Brixton Sans";
+  color: #CF0909;
+  font-size: 10rem;
+}
+
+
+.dw{
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 50rem;
+  font-family: "Brixton Sans";
+  color: #CF0909;
+  font-size: 10rem;
+  margin: auto;
+  padding-left: 14rem;
+  float: right;
+}
+
+#designer2{
+  padding-top: 17rem;
+}
+
+#pianist2{
+  padding-top: 22rem;
+}
+
+#bigwords p{
+  margin-top: 3rem;
+  float: right;
+}
+
+#bigwords > img{
+  width: 20rem;
+  float: right;
+}
+
+.iam{
+  padding-left: 16rem;
+  width: 20rem;
+  position: relative;
+  top: -80rem;
+  left: 0;
+}
+
+.iam2{
+  visibility: hidden;
+}
+
+.iam3{
+  visibility: hidden;
+  padding-bottom: 0.5rem;
+}
+
+#elements img{
+  position: fixed;
+  z-index: -999;
+  opacity: 1;
+}
+
+#head{
+  height: 440px;
+  right: 5px;
+  bottom: -440px;
+}
+
+#hand{
+  height: 600px;
+  left: 0;
+  right: 0;
+  padding-right: 25rem;
+  margin: auto;
+  top: -610px;
+}
+
+#piano{
+  width:40vw;
+  margin: auto;
+  padding-left: 40vw;
+  position: relative;
+}
+
+#piano > p.secabout{
+  padding-top: 650px;
+}
+
+.active{
+  visibility: hidden;
+}
+
+.activeOn{
+  visibility: inherit;
+}
+
+#heart{
+  width: 400px;
+  left: -410px;
+  top: 14vh;
+}
+
+
+#bigcontainer{
+  width: 2000rem;
+  height: 70vh;
+}
+
+#bigcontainer > a > div{
+  width: 55rem;
+  margin-right: 10rem;
+  display: inline-block;
+  height: 65vh;
+  float: left;
+  border-radius: 3px;
+}
+
+#bigcontainer > a > div > p{
+  display: inline-block;
+  width: 29rem;
+  height: 60vh;
+  vertical-align: middle;
+  margin: 0;
+  border-radius: 3px;
+  margin-right: 3rem;
+}
+
+#bigcontainer > a > div.wide{
+  width: 90rem;
+}
+
+
+#bigcontainer > a > div > p > span{
+  font-family: "Tallow Sans";
+  text-transform: lowercase;
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+  padding-bottom: 1rem;
+  display: block;
+  color: #CF0909;
+}
+
+
+#bigcontainer > a > div > img{
+  display: inline-block;
+  width: auto;
+  height: 60vh;
+  max-height: 35rem;
+  vertical-align: middle;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+
+#pincontainer{
+  position: absolute;
+}
+
+#desec{
+  position: absolute;
+  width: 50rem;
+}
+
+
+
+.portfolio-container{
+  margin: auto;
+  margin-bottom: 20rem;
+  width: 100vw;
+  height: 0;
+}
+
+.about-container > img {
+  width: 100%;
+}
+
+.about-container > .container{
+  padding-top: 10rem;
+  margin-bottom: 0;
+}
+
+#contact{
+  height: 100rem;
+
+  left: 0;
+  right: 0;
+}
+
+#about {
+  position: relative;
+  height: 50vh;
+}
+
+#plane{
+  width: 15rem;
+
+}
+
+#target{
+  position: absolute;
+  top: 30rem;
+  left: -15rem;
+  margin-bottom: 20rem;
+}
+
+#portrait a{
+  padding-right: 0.5rem;
+  color: red;
+}
+
+#portrait{
+  position: fixed;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 0;
+  background-image: url("../img/portrait.jpg");
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat:no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  /*height property is in main.js*/
+}
+
+.aboutText1 {
+  vertical-align: middle;
+  position: fixed;
+  top: 0;
+  left: 42vw;
+  width: 40vw;
+  margin-bottom: 0;
+  letter-spacing: 0.03rem;
+  z-index: 9;
+}
+
+.aboutText1 > span:first-child{
+  font-family: "Brixton Sans";
+  font-weight: 800;
+  font-size: 4rem;
+  line-height: 3.5rem;
+  display: block;
+  text-transform: uppercase;
+  color: #CF0909;
+}
+
+
+#fadeBox{
+  visibility: hidden;
+}
+
+.aboutText1 > span{
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+
+}
+
+.aboutText1 > span > a{
+  padding: 1rem 2rem;
+  /* border: solid #CF0909 1px; */
+  color: #CF0909;
+  font-family: "Brixton";
+  font-size:2rem;
+
+}
+
+span.workbut{
+  cursor: pointer;
+  font-family: "Martel Sans";
+  font-weight: 600;
+
+}
+
+
+#portfolio-nav {
+  width: 25rem;
+  margin: auto;
+  margin-bottom: 3rem;
+  padding-top: 3rem;
+}
+
+
+
+a.al {
+  border-bottom: 1px solid #c94700;
+}
+
+#Container .mix{
+    display: none;
+}
+
+
+
+
+nav.pnav {
+  height: 25rem;
+}
+
+
+
+.portHead1{
+  position: relative;
+  left:0;
+  right:0;
+  margin: auto;
+  font-family: "Martel Sans";
+  font-weight: 800;
+  font-size: 2.5rem;
+  letter-spacing: -0.1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 15rem;
+}
+
+.portHead2{
+  font-family: "Martel Sans";
+  font-weight: 900;
+  font-size: 3.8rem;
+  line-height: 5rem;
+  text-align: center;
+  letter-spacing: -0.1rem;
+}
+
+.portHead3{
+  font-family: "Martel Sans";
+  font-weight: 900;
+  font-size: 2.5rem;
+  text-align: center;
+  letter-spacing: -0.15rem;
+
+}
+
+.portHead4{
+  font-family: "Martel Sans";
+  font-weight: 800;
+  font-size: 2rem;
+  text-align: left;
+  letter-spacing: -0.08rem;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+
+.portTag{
+  text-align: center;
+}
+
+.portTag > span{
+  display: inline-block;
+  width: 3rem;
+  padding: 1rem;
+  margin: 1.5rem 0.5rem;
+  border: 1px #aaa solid;
+  border-radius: 2px;
+  color: #aaa;
+}
+
+.content{
+  width: 100vw;
+  margin: auto;
+  padding: 3rem 0;
+  font-family: "Martel";
+  color: black;
+}
+
+.chunk{
+  margin: 5rem auto;
+  width: 65rem;
+}
+
+.content p{
+
+  font-size: 1.6rem;
+  line-height: 3.5rem;
+  font-weight: 200;
+  color: #444;
+}
+
+
+
+
+#info_arch{
+  display: block;
+  position: absolute;
+  margin-left: -40rem;
+  margin-top: -30rem;
+  width: 1400px;
+}
+
+.chart{
+  display: block;
+  width: 500px;
+  padding-top: 3rem;
+  margin: auto;
+}
+
+#competitive{
+  width:1000px;
+  display: block;
+  position: relative;
+  left:-15rem;;
+  margin: auto;
+}
+
+#quotes{
+  width: 900px;
+  left: -10rem;
+  display: block;
+  position: relative;
+  margin:auto;
+}
+
+#rule{
+  width: 700px;
+  left: -3rem;
+  display: block;
+  position: relative;
+  margin:auto;
+}
+
+#pain{
+  width: 900px;
+  display: block;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-top: -30rem;
+  margin-left: -12rem;
+
+}
+
+#notes{
+  width: 700px;
+  display: block;
+  margin: auto;
+  margin-top: 6rem;
+  margin-left: -2rem;
+}
+
+#wireframe{
+  width: 1100px;
+  display: block;
+  margin: auto;
+  position: relative;
+  left: -20rem;
+}
+
+.structure{
+  display: block;
+  width: 700px;
+  margin: auto;
+}
+
+.right{
+  display: inline-block;
+  width: 65rem;
+  margin: auto;
+  vertical-align: middle;
+}
+
+.left-paragraph{
+  width: 37rem;
+  display: inline-block;
+  vertical-align: middle;
+  padding-right: 2rem;
+  padding-left: 5rem;
+}
+
+.therapist-thumbnail{
+  display: block;
+  width: 9rem;
+  margin: auto;
+  padding-bottom: 5rem;
+}
+.anim{
+  display: block;
+  margin: auto;
+  margin-left: 2rem;
+}
+
+.steps{
+  display: inline-block;
+  margin-top: 300px;
+  margin-bottom: 50px;
+
+}
+
+#steps-container{
+  width: 970px;
+  margin: auto;
+}
+
+.detail .chunk{
+  width: 100rem;
+  vertical-align: middle;
+}
+
+.detail .chunk p{
+  width: 30rem;
+  padding-left: 5rem;
+  font-size: 1.3rem;
+  line-height: 2.6rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.detail .chunk video{
+  width: 60rem;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+.solution{
+  width: 30rem;
+  display: inline-block;
+  margin-right: 5rem;
+  vertical-align: top;
+
+}
+
+.solution img{
+  width: 20rem;
+  display: block;
+  margin: auto;
+  padding-bottom: 10rem;
+}
+
+.solution-container{
+  width: 106rem;
+  margin: auto;
+}
+
+.solution p{
+  color: #444;
+  font-size: 1.4rem;
+  line-height: 2.6rem;
+  text-align: center;
+}
+
+.solution p span{
+  display: block;
+  font-size: 2rem;
+  font-family: "Martel Sans";
+  font-weight: 600;
+  padding-bottom: 1rem;
+}
+
+@media screen and (max-width: 1100px) {
+  div.pgrid{
+    height: 13rem;
+    width: 46vw;
+  }
+
+  .gallery div{
+    width: 31vw;
+  }
+
+  #d-block{
+    width: 46vw;
+    margin-right: 7rem;
+    margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #heart{
+    height: 390px;
+    padding-left: 3rem;
+  }
+
+  div.pgrid{
+    height: 13rem;
+    width: 48vw;
+  }
+  #head{
+    height: 370px;
+  }
+
+  .gallery div{
+    width: 33vw;
+  }
+
+  .gallery img{
+    padding-top: 2rem;
+  }
+
+  #d-block{
+    width: 48vw;
+    margin-right: 3rem;
+    margin-left: auto;
+  }
+}
+
+#warning{
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  nav > ul > li{
+    display: none;
+  }
+
+  .hero-1{
+    width: 70vw;
+  }
+
+  #wave{
+    background-image: url("../img/wave2.png");
+    background-size: 70vh;
+    background-position: center 70%;
+    background-repeat: no-repeat;
+    bottom:0vh;
+    width: 100vw;
+    height: 122vh;
+    position: fixed;
+    z-index: 9997;
+  }
+
+  #bigwords{
+    width: 50vw;
+    height: 10rem;
+    padding-top: 27vh; /*controls if bigwords stays at center screen*/
+    margin: auto;
+    position: absolute;
+    left:0;
+    right:0;
+    font-family: "Brixton Sans";
+    color: #CF0909;
+    font-size: 5rem;
+    line-height: 1rem;
+  }
+
+
+  #resume{
+    position: absolute;
+    z-index: 999;
+    z-index: 999; font-size: 3rem; width: 15rem; display: block; position: absolute; margin-top: 23rem; margin-left: 10rem;
+  }
+
+
+  #head{
+    height: 200px;
+    right: 15px;
+    bottom: -440px;
+  }
+
+  #heart{
+    width: 180px;
+    height:auto;
+    left: -450px;
+    top: 3vh;
+  }
+
+
+
+  .dw{
+    font-size: 5rem;
+    width: 10rem;
+    padding-left: 0;
+  }
+
+  .iam{
+    padding-left: 0rem;
+  }
+
+  #d-block{
+    padding-left: 0;
+    margin-left: 10vw;
+    width: 90vw;
+  }
+
+  #desec{
+    width: 80vw;
+  }
+  #research{
+    padding-right:0;
+    width: 80vw;
+    text-align: left;
+  }
+
+  #hand{
+    height: 300px;
+  }
+
+  #designer2{
+    width: 10vw;
+    left: 0;
+    padding-left:0;
+  }
+
+
+}
