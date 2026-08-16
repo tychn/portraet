@@ -6,7 +6,23 @@
 	<head>
 		<title>Tianying Chen</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+		<script>
+			// Lock 1% of the initial visual viewport so Chrome toolbar show/hide
+			// does not reflow vh-based homepage layout.
+			(function () {
+				function setVh() {
+					document.documentElement.style.setProperty("--vh", (window.innerHeight * 0.01) + "px");
+				}
+				setVh();
+				var lastWidth = window.innerWidth;
+				window.addEventListener("resize", function () {
+					if (window.innerWidth === lastWidth) return;
+					lastWidth = window.innerWidth;
+					setVh();
+				});
+			})();
+		</script>
 		<meta property="og:image" content="img/logo.png">
 		<meta property="og:site_name" content="Tianying Chen"/>
 		<meta name="google-site-verification" content="mnjhsna61zhhLHf4VrMUMLwre2rlSBHry5UZ6XtT-uQ" />
@@ -231,21 +247,10 @@
 
 
 
-		<script type="text/javascript" src="js/lib/highlight.pack.js"></script>
-		<script type="text/javascript" src="js/lib/modernizr.custom.min.js"></script>
-		<script type="text/javascript" src="js/lib/velocity.min.js"></script>
 		<script type="text/javascript" src="js/lib/gsap/gsap.min.js"></script>
 		<script type="text/javascript" src="js/lib/gsap/ScrollTrigger.min.js"></script>
 		<script type="text/javascript" src="js/lib/gsap/MotionPathPlugin.min.js"></script>
 		<script type="text/javascript" src="js/libs/jquery.smooth-scroll.js"></script>
-
-		<script type="text/javascript" src="js/three.min.js"></script>
-		<script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
-		<script type="text/javascript" src="js/renderers/Projector.js"></script>
-		<!-- <script type="text/javascript" src="js/renderers/CanvasRenderer.js"></script> -->
-		<script type="text/javascript" src="js/libs/stats.min.js"></script>
-		<script type="text/javascript" src="js/obj/Bird.js"></script>
-		<!-- <script type="text/javascript" src="js/canvas.js"></script> -->
 		<script type="text/javascript" src="js/main.js"></script>
 		<script type="text/javascript" src="js/mainScMa.js"></script>
 

@@ -4,7 +4,7 @@
 
 function resizePortrait(){
   if (parseFloat($(window).height()) / $(window).width() < 0.75){
-    $('#portrait').css({'height':'100vh', 'width':'100vw'});
+    $('#portrait').css({'height': 'calc(var(--vh) * 100)', 'width':'100%'});
   } else {
     $('#portrait').css({'height':'auto', 'width':'35vw'});
   }
@@ -46,6 +46,17 @@ $(window).on('resize', function(){
   // sizeHeight();
   // verticalAlignText('.aboutText1');
 });
+
+// Keep page locked to vertical scroll on mobile (off-screen art otherwise pans sideways)
+(function () {
+  function lockHorizontalScroll() {
+    if (window.scrollX !== 0) {
+      window.scrollTo(0, window.scrollY);
+    }
+  }
+  window.addEventListener('scroll', lockHorizontalScroll, { passive: true });
+  window.addEventListener('orientationchange', lockHorizontalScroll);
+})();
 
 
 

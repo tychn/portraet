@@ -1,11 +1,27 @@
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+  touch-action: pan-y;
+  /* --vh is set in index.html; falls back to real 1vh if unset */
+  --vh: 1vh;
+}
+
 body {
   font-family: "Martel", "Sans Serif", "Arial";
   font-weight: 200;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+  touch-action: pan-y;
+  position: relative;
   font-size: 1.7rem;
   line-height: 3rem;
   color: #444;
-
 }
 
 body.color{
@@ -153,7 +169,9 @@ li {
   display: block;
   position: relative;
   width: 90vh;
+  width: calc(var(--vh) * 90);
   top: 41vh;
+  top: calc(var(--vh) * 41);
 
   margin: auto auto;
 }
@@ -182,6 +200,7 @@ span.pubtitle{
 
 #home{
   height: 90vh;
+  height: calc(var(--vh) * 90);
 }
 
 #research{
@@ -255,7 +274,8 @@ span.pubtitle{
 }
 
 .section{
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -263,23 +283,32 @@ span.pubtitle{
 #container{
   position: absolute;
   z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  left: 0;
+  overflow-x: clip;
 }
 
 
 #wave{
   background-image: url("../img/wave.png");
   background-size: 120vh;
+  background-size: calc(var(--vh) * 120);
   background-position: center 70%;
   background-repeat: no-repeat;
   bottom:0vh;
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
+  left: 0;
   height: 115vh;
+  height: calc(var(--vh) * 115);
   position: fixed;
   z-index: 9997;
 }
 
 .hero-transition{
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
 }
 
 .gallery img{
@@ -424,6 +453,7 @@ a{
   width: 50rem;
   height: 10rem;
   padding-top: 27vh; /*controls if bigwords stays at center screen*/
+  padding-top: calc(var(--vh) * 27);
   margin: auto;
   position: absolute;
   left:0;
@@ -486,8 +516,18 @@ a{
   padding-bottom: 0.5rem;
 }
 
-#elements img{
+#elements{
   position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -999;
+}
+
+#elements img{
+  position: absolute;
   z-index: -999;
   opacity: 1;
 }
@@ -495,7 +535,7 @@ a{
 #head{
   height: 440px;
   right: 5px;
-  bottom: -440px;
+  bottom: 5px;
 }
 
 #hand{
@@ -508,9 +548,10 @@ a{
 }
 
 #piano{
-  width:40vw;
-  margin: auto;
-  padding-left: 40vw;
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
   position: relative;
 }
 
@@ -597,7 +638,8 @@ a{
 .portfolio-container{
   margin: auto;
   margin-bottom: 20rem;
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   height: 0;
 }
 
@@ -622,16 +664,19 @@ a{
   height: 50vh;
 }
 
-#plane{
-  width: 15rem;
-
-}
-
 #target{
   position: absolute;
   top: 30rem;
-  left: -15rem;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
   margin-bottom: 20rem;
+  overflow: visible;
+}
+
+#plane{
+  width: 15rem;
+  transform: translateX(-15rem);
 }
 
 #portrait a{
@@ -641,10 +686,12 @@ a{
 
 #portrait{
   position: fixed;
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   left: 0;
   top: 0;
   height: 100vh;
+  height: calc(var(--vh) * 100);
   z-index: 0;
   background-image: url("../img/portrait.jpg");
   background-size: cover;
@@ -790,7 +837,8 @@ nav.pnav {
 }
 
 .content{
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   margin: auto;
   padding: 3rem 0;
   font-family: "Martel";
@@ -1023,11 +1071,15 @@ nav.pnav {
   #wave{
     background-image: url("../img/wave2.png");
     background-size: 70vh;
+    background-size: calc(var(--vh) * 70);
     background-position: center 70%;
     background-repeat: no-repeat;
     bottom:0vh;
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
+    left: 0;
     height: 122vh;
+    height: calc(var(--vh) * 122);
     position: fixed;
     z-index: 9997;
   }
@@ -1036,6 +1088,7 @@ nav.pnav {
     width: 50vw;
     height: 10rem;
     padding-top: 27vh; /*controls if bigwords stays at center screen*/
+    padding-top: calc(var(--vh) * 27);
     margin: auto;
     position: absolute;
     left:0;
@@ -1055,15 +1108,15 @@ nav.pnav {
 
 
   #head{
-    height: 200px;
-    right: 15px;
-    bottom: -440px;
+    height: 250px;
+    right: 5px;
+    bottom: 5px;
   }
 
   #heart{
     width: 160px;
     height:auto;
-    left: -450px;
+    left: -400px;
     top: 1vh;
   }
 
@@ -1124,6 +1177,9 @@ nav.pnav {
   right: 0;
   margin-left: auto;
   margin-right: auto;
+}
+#plane{
+  width: 100px;
 }
 
 }
