@@ -172,10 +172,9 @@ li {
 .hero-1{
   display: block;
   position: relative;
-  width: 90vh;
-  width: calc(var(--vh) * 90);
-  top: 41vh;
-  top: calc(var(--vh) * 41);
+  width: 95vh;
+  top: 40vh;
+
 
   margin: auto auto;
 }
@@ -572,7 +571,7 @@ a{
 }
 
 #heart{
-  width: 400px;
+  width: 350px;
   left: -410px;
   top: 14vh;
 }
@@ -1124,41 +1123,16 @@ nav.pnav {
     font-size: 0;
     line-height: 0;
     transform-origin: center center;
-    transition: transform 0.32s ease, opacity 0.28s ease, width 0.32s ease;
+    transition: transform 0.32s ease, opacity 0.28s ease;
   }
 
-  /* Circle ring that morphs in when open */
-  .nav-toggle::after{
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 2.4rem;
-    height: 2.4rem;
-    margin: -1.2rem 0 0 -1.2rem;
-    border: 2px solid #CF0909;
-    border-radius: 50%;
-    box-sizing: border-box;
-    opacity: 0;
-    transform: scale(0.35);
-    transition: opacity 0.28s ease, transform 0.32s ease;
-    pointer-events: none;
-  }
-
-  nav.is-open .nav-toggle::after{
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  /* Two lines collapse into the circle */
+  /* Two lines merge into one when open */
   nav.is-open .nav-toggle-bar:nth-child(1){
-    transform: translateY(0.44rem) scaleX(0.2);
-    opacity: 0;
+    transform: translateY(0.44rem);
   }
 
   nav.is-open .nav-toggle-bar:nth-child(2){
-    transform: translateY(-0.44rem) scaleX(0.2);
-    opacity: 0;
+    transform: translateY(-0.44rem);
   }
 
   nav > ul{
@@ -1220,13 +1194,12 @@ nav.pnav {
   }
 
   .hero-1{
-    width: 70vw;
+    width: 50vh;
   }
 
   #wave{
-    background-image: url("../img/wave2.png");
-    background-size: 70vh;
-    background-size: calc(var(--vh) * 70);
+    background-image: url("../img/smallwave.png");
+    background-size: 75vh;
     background-position: center 70%;
     background-repeat: no-repeat;
     bottom:0vh;
@@ -1336,5 +1309,7 @@ nav.pnav {
 #plane{
   width: 100px;
 }
+
+
 
 }
